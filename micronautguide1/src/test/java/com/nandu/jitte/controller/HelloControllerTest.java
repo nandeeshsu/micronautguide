@@ -3,6 +3,7 @@ package com.nandu.jitte.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.nandu.jitte.model.Hello;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -18,11 +19,20 @@ public class HelloControllerTest {
     HttpClient httpClient;
 
     @Test
-    public void testHello(){
-        HttpRequest<String> httpRequest = HttpRequest.GET("/hello");
+    public void testHelloText(){
+        HttpRequest<String> httpRequest = HttpRequest.GET("/hello/text");
         String body = httpClient.toBlocking().retrieve(httpRequest);
 
         assertNotNull(body);
         assertEquals("Welcome to micronaut", body);
+    }
+
+    @Test
+    public void testHelloJson(){
+        HttpRequest<String> httpRequest = HttpRequest.GET("/hello/json");
+        String body = httpClient.toBlocking().retrieve(httpRequest);
+
+        assertNotNull(body);
+        assertEquals("{\"message\":\"Welcome to micronaut\"}", body);
     }
 }
