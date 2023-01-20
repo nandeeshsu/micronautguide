@@ -80,6 +80,12 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.20</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -98,11 +104,23 @@
 
           <annotationProcessorPaths combine.children="append">
             <path>
+              <!-- must precede micronaut-inject-java otherwise won't work -->
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.20</version>
+            </path>
+            <path>
               <groupId>io.micronaut</groupId>
-              <artifactId>micronaut-http-validation</artifactId>
+              <artifactId>micronaut-inject-java</artifactId>
+              <version>${micronaut.version}</version>
+            </path>
+            <path>
+              <groupId>io.micronaut</groupId>
+              <artifactId>micronaut-validation</artifactId>
               <version>${micronaut.version}</version>
             </path>
           </annotationProcessorPaths>
+
           <compilerArgs>
             <arg>-Amicronaut.processing.group=com.nandu.jitte</arg>
             <arg>-Amicronaut.processing.module=micronautguide1</arg>
