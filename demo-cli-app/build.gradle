@@ -19,6 +19,12 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
 
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor "org.projectlombok:lombok:1.18.20"
+
+    // Micronaut processor defined after Lombok
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+
     testImplementation("io.micronaut:micronaut-http-client")
 
 }
