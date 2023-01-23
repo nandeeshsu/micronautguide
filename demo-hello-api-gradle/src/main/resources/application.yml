@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: micronautguide1
+    name: demoHelloApiGradle
   router:
     static-resources:
       swagger:
@@ -13,6 +13,3 @@ netty:
   default:
     allocator:
       max-order: 3
-
-greeting:
-  message: Hello from micronaut guide default env

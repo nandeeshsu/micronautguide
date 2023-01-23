@@ -1,9 +1,3 @@
-## How to build locally
-java -Dmicronaut.environments=dev -jar target/micronautguide1-0.1.jar
-
-### To build native image
-./mvnw package -Dpackaging=native-image
-
 ## Micronaut 3.8.1 Documentation
 
 - [User Guide](https://docs.micronaut.io/3.8.1/guide/index.html)
@@ -12,9 +6,17 @@ java -Dmicronaut.environments=dev -jar target/micronautguide1-0.1.jar
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
 ---
 
+- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
 ## Feature http-client documentation
 
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+
+
+## Feature lombok documentation
+
+- [Micronaut Project Lombok documentation](https://docs.micronaut.io/latest/guide/index.html#lombok)
+
+- [https://projectlombok.org/features/all](https://projectlombok.org/features/all)
 
 
 ## Feature swagger-ui documentation
