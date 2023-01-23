@@ -10,6 +10,8 @@ import io.micronaut.http.annotation.Produces;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Optional;
+
 @Controller("/hello")
 @Slf4j
 public class HelloController {
@@ -31,8 +33,16 @@ public class HelloController {
     @Produces(MediaType.APPLICATION_JSON)
     public Hello helloJson(){
         //NOTE:- environment.getProperty() returns the Optional object
-        log.info(" property via Environment bean {}" , environment.getProperty("greeting.message", String.class).get());
+        log.info(" property via Environment bean {}" ,
+                environment.getProperty("greeting.message", String.class).get());
 
         return Hello.builder().message(message).build();
+    }
+
+    @Get("json/env")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Hello helloEnvVarJson(){
+        Optional<String> environmentProperty = environment.getProperty("greeting.environmentVariable", String.class);
+        return Hello.builder().message(environmentProperty.orElse("Didn't find any variable set in the environment")).build();
     }
 }

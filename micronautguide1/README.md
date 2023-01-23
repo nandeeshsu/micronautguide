@@ -1,7 +1,12 @@
 ## How to build locally
 java -Dmicronaut.environments=dev -jar target/micronautguide1-0.1.jar
 
-### To build native image
+- To pass envrionment variable
+
+java -Dmicronaut.environments=dev -DTEST_ENV_VAR=testingenvironment -jar target/micronautguide1-0.1.jar
+
+- To build native image
+
 ./mvnw package -Dpackaging=native-image
 
 ## Micronaut 3.8.1 Documentation

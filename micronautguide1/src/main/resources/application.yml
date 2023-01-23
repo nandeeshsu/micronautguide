@@ -16,3 +16,4 @@ netty:
 
 greeting:
   message: Hello from micronaut guide default env
+  environmentVariable: ${TEST_ENV_VAR}

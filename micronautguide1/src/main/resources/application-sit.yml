@@ -1,2 +1,3 @@
 greeting:
   message: Hello from micronaut guide sit env
+  environmentVariable: ${TEST_ENV_VAR}
