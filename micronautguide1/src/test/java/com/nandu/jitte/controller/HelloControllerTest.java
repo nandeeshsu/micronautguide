@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 public class HelloControllerTest {
 
     @Inject
-    @Client("/")
+    @Client("/demo")
     HttpClient httpClient;
 
     @Test

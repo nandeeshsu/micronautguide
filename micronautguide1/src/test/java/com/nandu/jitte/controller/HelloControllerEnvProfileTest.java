@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class HelloControllerEnvProfileTest {
 
     @Inject
-    @Client("/")
+    @Client("/demo")
     HttpClient httpClient;
 
     @Test
