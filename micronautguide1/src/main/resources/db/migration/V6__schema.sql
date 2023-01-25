@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS public.book
     name character varying(255) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT book_pkey PRIMARY KEY (id),
     CONSTRAINT name_unique UNIQUE (name)
-)
+);
 
 ALTER TABLE IF EXISTS public.book OWNER to postgres;

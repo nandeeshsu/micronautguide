@@ -59,14 +59,14 @@ public class BookController {
 
     @Post("/ex")
     public HttpResponse<BookDto> saveExceptions(@Body @NotBlank BookDto bookDto) {
-        try {
+        //try {
             BookDto bookDto1 = bookService.saveWithException(bookDto);
             return HttpResponse
                     .created(bookDto1)
                     .headers(headers -> headers.location(buildLocation(bookDto1.getId())));
-        } catch(DataAccessException e) {
-            return HttpResponse.noContent();
-        }
+        //} catch(DataAccessException e) {
+            //return HttpResponse.noContent();
+        //}
     }
 
     @Put
