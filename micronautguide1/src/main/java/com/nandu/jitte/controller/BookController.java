@@ -2,9 +2,12 @@ package com.nandu.jitte.controller;
 
 import com.nandu.jitte.db.repo.BookRepository;
 import com.nandu.jitte.exception.OutOfStockException;
+import com.nandu.jitte.interceptor.LogTime;
 import com.nandu.jitte.model.BookDto;
 import com.nandu.jitte.model.BookUpdateCommand;
+import com.nandu.jitte.security.Auth;
 import com.nandu.jitte.service.BookService;
+import io.micronaut.core.annotation.Introspected;
 import io.micronaut.data.exceptions.DataAccessException;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.HttpHeaders;
@@ -14,6 +17,7 @@ import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -23,6 +27,8 @@ import java.util.List;
 @ExecuteOn(TaskExecutors.IO) //any blocking I/O operations (such as fetching the data from the database) are
 // offloaded to a separate thread pool that does not block the Event loop.
 @Controller("/books")
+@Slf4j
+//@Introspected
 public class BookController {
     private final BookRepository bookRepository;
     private final BookService bookService;
@@ -48,8 +54,11 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
+    @Auth
     @Post
-    public HttpResponse<BookDto> save(@Body @NotBlank BookDto bookDto) {
+    @LogTime
+    public HttpResponse<BookDto> save(@Body @NotBlank BookDto bookDto, @Header("Authorization") String authorizationHeader) {
+        log.info("save request:: {}", bookDto.toString());
         BookDto bookDto1 = bookService.createBook(bookDto);
 
         return HttpResponse
