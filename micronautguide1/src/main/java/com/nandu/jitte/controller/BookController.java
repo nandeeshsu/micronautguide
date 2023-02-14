@@ -54,6 +54,10 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
+    /*
+     * here @Header("Authorization") String authorizationHeader is needed if this need to be available in interceptor.
+     * like this we can inject the HttpRequest object.
+     */
     @Auth
     @Post
     @LogTime

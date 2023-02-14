@@ -1,5 +1,6 @@
 package com.nandu.jitte.controller;
 
+import com.nandu.jitte.client.MyApiService;
 import com.nandu.jitte.model.Hello;
 import io.micronaut.context.annotation.Value;
 import io.micronaut.context.env.Environment;
@@ -23,9 +24,13 @@ public class HelloController {
     @Inject
     Environment environment;
 
+    @Inject
+    MyApiService myApiService;
+
     @Get("text")
     @Produces(MediaType.TEXT_PLAIN)
     public String helloText(){
+        log.info("myApiService.getData:: {}", myApiService.getData());
         return "Welcome to micronaut";
     }
 

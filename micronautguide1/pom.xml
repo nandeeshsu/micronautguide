@@ -122,6 +122,17 @@
       <artifactId>micronaut-flyway</artifactId>
       <scope>compile</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.micronaut.cache</groupId>
+      <artifactId>micronaut-cache-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.micronaut.cache</groupId>
+      <artifactId>micronaut-cache-caffeine</artifactId>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
